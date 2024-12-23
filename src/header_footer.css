@@ -1,0 +1,108 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face
+{
+    font-family: 'SourceSansPro', sans-serif;
+    src:url(SourceSansPro-Regular.otf) format("truetype");
+    src:url(SourceSansPro-Semibold.otf) format("truetype");
+}
+
+    body {
+        height: 200vh; /* Umo¿liwia przewijanie strony */
+        margin: 0;
+    }
+
+    .header-frame {
+        height: 108px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        background: rgba(20, 19, 43, 1);
+        z-index: 1000;
+        transition: background .5s ease, opacity .2s ease;
+    }
+
+    .header-frame.scrolled {
+        background: linear-gradient(to bottom, rgba(20, 19, 43, 1) 0%, rgba(20, 19, 43, 0) 100%);
+        opacity: 0.5;
+    }
+
+    .header-frame.scrolled:hover {
+        background: rgba(20, 19, 43, 1);
+        opacity: 1;
+    }
+
+    .leftBox {
+        height: 100%;
+        width: 10%;
+        display: flex;
+        padding: 10px;
+    }
+
+    .rightBox {
+        height: 100%;
+        width: 90%;
+        display: flex;
+        padding: 10px;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+
+    .menuButton {
+        height: fit-content;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .menuButton:hover {
+        transform: scale(1.11);
+    }
+
+    .menuText {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        color: #F9F8FB;
+        letter-spacing: -0.01em;
+    }
+
+    .menuText:hover {
+        color: darkgrey;
+    }
+
+
+    @media screen and (max-width: 1250px) {
+        body {
+            height: auto; /* Adjust height for mobile */
+        }
+
+        .header-frame {
+            height: 80px; /* Decrease header height for small screens */
+        }
+
+        .menuButton {
+            margin-left: 15px;
+        }
+
+        .menuText {
+            font-size: 14px; /* Smaller text for mobile */
+        }
+
+        .responsive-image {
+            height: auto; /* Maintain the aspect ratio */
+            width: 80px; /* Set a maximum width to maintain quality */
+        }
+    }
