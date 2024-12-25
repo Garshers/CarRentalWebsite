@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -12,7 +12,7 @@
 }
 
     body {
-        height: 200vh; /* Umo¿liwia przewijanie strony */
+        height: 100vh;
         margin: 0;
     }
 
@@ -82,15 +82,83 @@
     .menuText:hover {
         color: darkgrey;
     }
-
+    .responsive-image {
+        height: auto;
+        width: 100px;
+    }
+    .footer-frame {
+        height: 200px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: rgba(20, 19, 43, 1);
+        z-index: 1000;
+        margin-top: auto;
+    }
+    .box1-3 {
+        height: auto;
+        width: 33.33%;
+        border: 0px solid red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        flex-direction: column;
+    }
+    .footerText {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        color: #F9F8FB;
+        letter-spacing: -0.01em;
+        text-align: center;
+        max-width: 300px;
+    }
+    .footer-mainText {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 40px;
+        Line-height: 100%;
+        color: #F9F8FB;
+        text-align: center;
+        letter-spacing: -0.03em;
+        margin:20px;
+    }
+    .footer-copyright {
+        height: 30px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: rgba(15, 14, 34, 1);
+        z-index: 1000;
+        position: page;
+        margin-top: auto;
+        justify-content: center;
+    }
+    .footerCopyright {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        color: #F9F8FB;
+        letter-spacing: -0.01em;
+        text-align: center;
+        max-width: 400px;
+    }
 
     @media screen and (max-width: 1250px) {
         body {
-            height: auto; /* Adjust height for mobile */
+            height: auto;
         }
 
         .header-frame {
-            height: 80px; /* Decrease header height for small screens */
+            height: 80px;
         }
 
         .menuButton {
@@ -98,11 +166,22 @@
         }
 
         .menuText {
-            font-size: 14px; /* Smaller text for mobile */
+            font-size: 14px;
         }
 
         .responsive-image {
-            height: auto; /* Maintain the aspect ratio */
-            width: 80px; /* Set a maximum width to maintain quality */
+            height: auto;
+            width: 80px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .footer-frame {
+            flex-direction: column;
+            height: fit-content;
+        }
+
+        .box1-3 {
+            width: 70%;
         }
     }

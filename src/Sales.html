@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sales - Car rental</title>
+    <link rel="shortcut icon" href="Images/icon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="header_footer.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body style="background-color: #F9F8FB;"> 
+    <div id="home-page">
+        <div class="header-frame" id="header">
+            <div class="leftBox">
+                <img class="responsive-image" src="images/icon.png">
+            </div>
+            <div class="rightBox">
+                <div class="menuButton" onclick="window.location.href='SignLog.html';">
+                    <div class="menuText">sign in / log in</div>
+                </div>
+                <div class="menuButton" onclick="window.location.href='Sales.html';">
+                    <div class="menuText">Sales</div>
+                </div>
+                <div class="menuButton" onclick="window.location.href='Booking.html';">
+                    <div class="menuText">Booking</div>
+                </div>
+                <div class="menuButton" onclick="window.location.href='CarPortfolio.html';">
+                    <div class="menuText">Car portfolio</div>
+                </div>
+                <div class="menuButton" onclick="window.location.href='MainPage.html';">
+                    <div class="menuText">Home</div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            window.addEventListener('scroll', function () {
+                const header = document.getElementById('header');
+                if (window.scrollY > 0) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        </script>
+
+        <div class="mid_content"></div>
+
+        <div class="footer-frame" id="footer">
+            <div class="box1-3">
+                <div class="footerText">+48 222 111 XXX</div>
+                <div class="footerText">Infolinia jest czynna od poniedziałku do piątku w godzinach 9:00 - 21:00.</div>
+            </div>
+            <div class="box1-3">
+                <div class="footer-mainText">Biuro Obsługi Klienta</div>
+                <img class="responsive-image" src="images/icon.png">
+            </div>
+            <div class="box1-3">
+                <div class="footerText">kontakt@rentcars.pl</div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="footerCopyright">© 2024 Express Car Rental. Wszelkie prawa zastrzeżone</div>
+        </div>
+
+    </div>
+</body>
+</html>

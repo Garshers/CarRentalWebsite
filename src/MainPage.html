@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page - Car rental</title>
+    <link rel="shortcut icon" href="Images/icon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="main_Page.css" />
+    <link rel="stylesheet" href="booking_Form.css" />
+    <link rel="stylesheet" href="header_footer.css" />
+    <link rel="stylesheet" type="text/css" href="calendar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body style="background-color: #F9F8FB;">
+    <div id="home-page">
+
+        <div class="background-slideshow"></div>
+
+        <div class="header-frame" id="header">
+            <div class="leftBox">
+                <img class="responsive-image" src="images/icon.png">
+            </div>
+            <div class="rightBox">
+                <div class="menuButton" onclick="window.location.href='SignLog.html';">
+                    <div class="menuText">sign in / log in</div>
+                </div>
+                <div class="menuButton" onclick="window.location.href='Sales.html';">
+                    <div class="menuText">Sales</div>
+                </div>
+                <div class="menuButton" onclick="window.location.href='Booking.html';">
+                    <div class="menuText">Booking</div>
+                </div>
+                <div class="menuButton" onclick="window.location.href='CarPortfolio.html';">
+                    <div class="menuText">Car portfolio</div>
+                </div>
+                <div class="menuButton" onclick="window.location.href='MainPage.html';">
+                    <div class="menuText">Home</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mid_content">
+            <div class="form-container">
+                <div class="pick-up-location">
+                    <div class="pick-up-text">Pick-up location</div>
+                    <input id="pick-up-place" name="location" placeholder="Enter airport or city" autocomplete="off" class="content1">
+
+                    <!-- Lista rozwijana z lokalizacjami, jest to alternatywny zabieg zastosowany z powodu konieczności płatności za API Google Places oraz konieczności podawania danych karty dla Mapbox Places API -->
+                    <div id="locations-dropdown" class="locations-dropdown datalist-hidden">
+                        <div>Międzynarodowy Port Lotniczy Katowice</div>
+                        <div>Spodek</div>
+                        <div>Dworzec Kolejowy Katowice</div>
+                        <div>Silesia City Center</div>
+                        <div>Uniwersytet Śląski</div>
+                        <div>Nikiszowiec</div>
+                    </div>
+                    <div class="pick-up-return">
+                        <form action="submit.php" method="POST">
+                            <input type="checkbox" id="checkbox1" name="custom_checkbox" value="1" class="custom-checkbox">
+                            <label for="checkbox1" class="custom-checkbox-label"></label>
+                        </form>
+                        <div class="content0">Return car in different location</div>
+                    </div>
+                </div>
+                <div class="pick-up-date">
+                    <div class="date-container">
+                        <div class="pick-up-text">Pick-up and Drop-off</div>
+                        <div class="calendar-container">
+                            <div class="calendar jsCalendar" data-localized_date='{"days":{"names":{"min":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]}},"months":{"names":{"long":["January","February","March","April","May","June","July","August","September","October","November","December"]}}}'></div>
+                            <script type="text/javascript" src="external/jquery-1.6.1.js"></script>
+                        </div>
+                        <div class="time-container">
+                            <div class="stime">
+                                <div class="content0">Pick up:</div>
+                                <select name="time" id="time" class="time-choice"></select>
+                            </div>
+                            <div class="stime">
+                                <div class="content0">Drop off:</div>
+                                <select name="time" id="time1" class="time-choice"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bot-container">
+                    <div class="content0">Driver's country of residence is Poland and age is 30-65</div>
+                    <div class="search-container">
+                        <div class="pick-up-text" style="color: #FFFFFF;">Search</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer-frame" id="footer">
+            <div class="box1-3">
+                <div class="footerText">+48 222 111 XXX</div>
+                <div class="footerText">Infolinia jest czynna od poniedziałku do piątku w godzinach 9:00 - 21:00.</div>
+            </div>
+            <div class="box1-3">
+                <div class="footer-mainText">Biuro Obsługi Klienta</div>
+                <img class="responsive-image" src="images/icon.png">
+            </div>
+            <div class="box1-3">
+                <div class="footerText">kontakt@rentcars.pl</div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="footerCopyright">© 2024 Express Car Rental. Wszelkie prawa zastrzeżone</div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script type="text/javascript" src="external/customModernizr.js"></script>
+<script type="text/javascript" src="calendar.js"></script>
+<script type="text/javascript">
+    $(".jsCalendar").bind("startDateChanged", function () {
+        $(this).data("startdate");
+    }).bind("endDateChanged", function () {
+        $(this).data("enddate");
+    });
+</script>
+<script>
+    window.addEventListener('scroll', function () {
+        const header = document.getElementById('header');
+        if (window.scrollY > 0) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+</script>
+<script>
+    const input = document.getElementById('pick-up-place');
+    const dropdown = document.getElementById('locations-dropdown');
+
+    // Pokazuje dropdown po kliknięciu w input
+    input.addEventListener('focus', () => {
+        dropdown.classList.remove('datalist-hidden');
+    });
+
+    // Ustawia wartość input na wybraną lokalizację i ukrywa dropdown
+    dropdown.addEventListener('click', (event) => {
+        if (event.target.tagName === 'DIV') {
+            input.value = event.target.textContent; // Ustawia wybraną lokalizację jako wartość input
+            dropdown.classList.add('datalist-hidden'); // Ukrywa dropdown
+        }
+    });
+
+    // Ukrywa dropdown po kliknięciu w inną część strony
+    document.addEventListener('click', (event) => {
+        if (!input.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.add('datalist-hidden');
+        }
+    });
+
+    // Pokazuje dropdown po kliknięciu w input
+    input.addEventListener('click', () => {
+        dropdown.classList.remove('datalist-hidden');
+    });
+
+    // Zapobiega zniknięciu dropdown po kliknięciu wewnątrz dropdown
+    dropdown.addEventListener('mousedown', (event) => {
+        event.preventDefault();
+    });
+</script>
+<script>
+    const times = [
+        "12:00am", "12:30am", "1:00am", "1:30am", "2:00am", "2:30am", "3:00am", "3:30am",
+        "4:00am", "4:30am", "5:00am", "5:30am", "6:00am", "6:30am", "7:00am", "7:30am",
+        "8:00am", "8:30am", "9:00am", "9:30am", "10:00am", "10:30am", "11:00am", "11:30am",
+        "12:00pm", "12:30pm", "1:00pm", "1:30pm", "2:00pm", "2:30pm", "3:00pm", "3:30pm",
+        "4:00pm", "4:30pm", "5:00pm", "5:30pm", "6:00pm", "6:30pm", "7:00pm", "7:30pm",
+        "8:00pm", "8:30pm", "9:00pm", "9:30pm", "10:00pm", "10:30pm", "11:00pm", "11:30pm"
+    ];
+
+    function populateTimeOptions(selectId) {
+        const select = document.getElementById(selectId);
+        times.forEach(time => {
+            const option = document.createElement('option');
+            option.value = time;
+            option.text = time;
+            select.appendChild(option);
+        });
+    }
+
+    populateTimeOptions('time');  // For Pick up time
+    populateTimeOptions('time1'); // For Drop off time
+</script>
