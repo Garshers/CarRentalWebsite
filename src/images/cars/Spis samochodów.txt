@@ -1,0 +1,29 @@
+Kolumny do wpisania: Rodzaj (benzyna/disel/hybryda/elektryk)
+skrzyna biegów (automat, manual), 1-100 [w formie "5.6s"], litrów ładowności bagażnika [w formie "324l"], 
+ile drzwiowa, ilu osobowa [w formie "5 os."], jaki napęd (przód, tył, 4x4), 
+top speed [w formie "300 km/h"], spalanie [5.2l/100km]
+
+1. BMW serii 1
+2. AUDI A4 sedan
+3. BMW serii 2
+4. Mini Countryman Cooper
+5. AUDI A4 kombi
+6. BMW serii 3
+7. Hyundai i30
+8. KIA Ceed
+9. BMW serii 4
+10. BMW serii 5
+11. BMW X1
+12. Seat Leon
+13. Hyundai i30
+14. BMW X2
+15. Ford Transit Custom 9 os.
+16. Mercedes Vito 9 os.
+17. Renault Trafic 9 os.
+18. Fiat Ducato BRYGADÓWKA
+19. Iveco Daily 16 m3
+20. Mercedes Sprinter 15m3
+21. Fiat Ducato Plandeka 10 Europalet
+22. BMW iX1
+23. BMW i4
+24. BMW iX2

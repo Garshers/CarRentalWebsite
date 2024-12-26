@@ -1,0 +1,128 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.sign-log-container {
+    width: 80%;
+    max-width: 400px;
+    min-height: 200px;
+    height: fit-content;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto 100px;
+    padding: 10px;
+    border-radius: 10px;
+    align-items: center;
+    gap: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid lightgray;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.sign-log-title {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    Font-size: 32px;
+    Line-height: 140%;
+    color: #14132B;
+    letter-spacing: -3%;
+    text-align: center;
+
+    margin: 20px 0 20px;
+}
+.spec-container {
+    width: 100%;
+    min-height: 80px;
+    height: fit-content;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    border: 1px solid #E2E8EB;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    Font-size: 24px;
+    Line-height: 140%;
+    color: #14132B;
+    letter-spacing: -3%;
+    text-align: center;
+}
+.spec-container:hover {
+    background-color: rgba(20, 19, 43, 0.3);
+}
+.spec-container:active {
+    background-color: rgba(20, 19, 43, 0.8);
+    color: white;
+}
+.forgot-text {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 200;
+    Font-size: 16px;
+    Line-height: 140%;
+    color: #14132B;
+    letter-spacing: -3%;
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 20px;
+}
+.forgot-text:hover {
+    color: darkslateblue;
+}
+.forgot-text:active {
+    color: #14132B;
+}
+.log-in-container {
+    width: 90%;
+    min-height: 30px;
+    height: fit-content;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid gray;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+}
+.log-in-button {
+    width: 90%;
+    max-width: 200px;
+    min-height: 40px;
+    height: fit-content;
+    border-radius: 10px;
+    background-color: rgba(20, 19, 43, 1);
+    margin: 10px auto 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    Font-size: 32px;
+    Line-height: 140%;
+    color: white;
+    letter-spacing: -3%;
+    text-align: center;
+}
+.log-in-button:hover {
+    background-color: rgba(20, 19, 43, 0.7);
+}
+.log-in-button:active {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+@media screen and (max-width: 1000px) {
+}

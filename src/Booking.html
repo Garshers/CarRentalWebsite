@@ -7,14 +7,18 @@
     <title>Rent our car - Car rental</title>
     <link rel="shortcut icon" href="Images/icon.png" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="booking_Page.css" />
+    <link rel="stylesheet" href="main_Page.css" />
+    <link rel="stylesheet" href="car_Portfolio.css" />
     <link rel="stylesheet" href="booking_Form.css" />
     <link rel="stylesheet" href="header_footer.css" />
+    <link rel="stylesheet" type="text/css" href="calendar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
-<body style="background-color: #F9F8FB;">
+<body style="background: white; ">
     <div id="home-page">
         <div class="header-frame" id="header">
             <div class="leftBox">
@@ -39,8 +43,309 @@
             </div>
         </div>
 
+        <div class="booking-content">
+            <div class="left-box">
+                <div class="form-container">
+                    <div class="pick-up-location">
+                        <div class="pick-up-text">Pick-up location</div>
+                        <input id="pick-up-place" name="location" placeholder="Enter pick-up place" autocomplete="off" class="content1">
 
-        <div class="mid_content">
+                        <!-- Lista rozwijana z lokalizacjami, jest to alternatywny zabieg zastosowany z powodu konieczności płatności za API Google Places oraz konieczności podawania danych karty dla Mapbox Places API -->
+                        <div id="locations-dropdown" class="locations-dropdown datalist-hidden">
+                            <div>Międzynarodowy Port Lotniczy Katowice</div>
+                            <div>Spodek</div>
+                            <div>Dworzec Kolejowy Katowice</div>
+                            <div>Silesia City Center</div>
+                            <div>Uniwersytet Śląski</div>
+                            <div>Nikiszowiec</div>
+                        </div>
+                        <div id="drop-off-section" class="datalist-hidden">
+                            <div class="pick-up-text">Drop-off location</div>
+                            <input id="drop-off-place" name="dropoff-location" placeholder="Enter drop-off place" autocomplete="off" class="content1">
+
+                            <div id="dropoff-locations-dropdown" class="locations-dropdown datalist-hidden">
+                                <div>Międzynarodowy Port Lotniczy Katowice</div>
+                                <div>Spodek</div>
+                                <div>Dworzec Kolejowy Katowice</div>
+                                <div>Silesia City Center</div>
+                                <div>Uniwersytet Śląski</div>
+                                <div>Nikiszowiec</div>
+                            </div>
+                        </div>
+                        <div class="pick-up-return">
+                            <form action="submit.php" method="POST">
+                                <input type="checkbox" id="checkbox1" name="custom_checkbox" value="1" class="custom-checkbox">
+                                <label for="checkbox1" class="custom-checkbox-label"></label>
+                            </form>
+                            <div class="content0">Return car in different location</div>
+                        </div>
+                    </div>
+                    <div class="pick-up-date">
+                        <div class="date-container">
+                            <div class="pick-up-text">Pick-up and Drop-off</div>
+                            <div class="calendar-container">
+                                <div class="calendar jsCalendar" data-localized_date='{"days":{"names":{"min":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]}},"months":{"names":{"long":["January","February","March","April","May","June","July","August","September","October","November","December"]}}}'></div>
+                                <script type="text/javascript" src="external/jquery-1.6.1.js"></script>
+                            </div>
+                            <div class="time-container">
+                                <div class="stime">
+                                    <div class="content0">Pick up:</div>
+                                    <select name="time" id="time" class="time-choice"></select>
+                                </div>
+                                <div class="stime">
+                                    <div class="content0">Drop off:</div>
+                                    <select name="time" id="time1" class="time-choice"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bot-container">
+                        <div class="content0">Driver's country of residence is Poland and age is 30-65</div>
+                        <div class="search-container">
+                            <div class="pick-up-text" style="color: #FFFFFF;">Search</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-container">
+                    <div class="filter-title">Filtering</div>
+                    <div class="filter-box" data-category="vehicle-type">
+                        <div class="filter-subtitle">Vehicle type</div>
+                        <div class="filter-specified-box" data-filter="car-kind-1" id="show-all">
+                            <div class="check-box"></div>
+                            <div class="filter-specification-text">Show all</div>
+                        </div>
+                        <div class="filter-specified-box" data-filter="car-kind-2">
+                            <div class="check-box"></div>
+                            <div class="filter-specification-text">Passenger</div>
+                        </div>
+                        <div class="filter-specified-box" data-filter="car-kind-3">
+                            <div class="check-box"></div>
+                            <div class="filter-specification-text">Van</div>
+                        </div>
+                        <div class="filter-specified-box" data-filter="car-kind-4">
+                            <div class="check-box"></div>
+                            <div class="filter-specification-text">Delivery van</div>
+                        </div>
+                        <div class="filter-specified-box" data-filter="car-kind-5">
+                            <div class="check-box"></div>
+                            <div class="filter-specification-text">Electric</div>
+                        </div>
+                    </div>
+
+                    <div class="filter-box" data-category="transmission">
+                        <div class="filter-subtitle">Transmission</div>
+                        <div class="filter-specified-box" data-filter="transmission-1">
+                            <div class="check-box"></div>
+                            <div class="filter-specification-text">Manual</div>
+                        </div>
+                        <div class="filter-specified-box" data-filter="transmission-2">
+                            <div class="check-box"></div>
+                            <div class="filter-specification-text">Automatic</div>
+                        </div>
+                    </div>
+
+                    <div class="filter-box" data-category="cost">
+                        <div class="filter-subtitle">Fuel type</div>
+                        <div class="filter-specified-box" data-filter="cost-1">
+                            <div class="check-box"></div>
+                            <div class="filter-specification-text">Gasoline/Petrol</div>
+                        </div>
+                        <div class="filter-specified-box" data-filter="cost-2">
+                            <div class="check-box"></div>
+                            <div class="filter-specification-text">Disel</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-box">
+                <div class="content-frame" style="width: 100%; padding: 10px;">
+                    <div class="box" style="background-color: #FFFFFF; border: 1px solid #E2E8EB; transition: transform 0.3s;">
+                        <div class="inside0-frame">
+                            <div class="module">Volkswagen Golf R</div>
+                            <div class="price">
+                                <div class="dolar-sign">PLN</div>
+                                <div class="cost">750</div>
+                                <div class="period">/day</div>
+                            </div>
+                            <img src="images/cars/Car_2.png" alt="check" class="custom-image">
+                        </div>
+                        <div class="inside1-frame">
+                            <div class="description">The Volkswagen Golf R gained fame for being a great car with a sporty character, yet fully suitable for everyday use.</div>
+                            <div class="icon-box">
+                                <div class="small-icon-box">
+                                    <div class="pros">
+                                        <img src="images/icon_Tank.png" alt="check" class="custom-icon">
+                                        <div class="text">Disel</div>
+                                    </div>
+                                    <div class="pros">
+                                        <img src="images/icon_Transmission.png" alt="check" class="custom-icon">
+                                        <div class="text">Automatic</div>
+                                    </div>
+                                </div>
+                                <div class="small-icon-box">
+                                    <div class="pros">
+                                        <img src="images/icon_Luggage.png" alt="check" class="custom-icon">
+                                        <div class="text">300l</div>
+                                    </div>
+                                    <div class="pros">
+                                        <img src="images/icon_1_to_100.png" alt="check" class="custom-icon">
+                                        <div class="text">5s</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="get-started" href="nowhere"><div class="start-text">Rent the car</div></a>
+                        </div>
+                    </div>
+                    <div class="box" style="background-color: #FFFFFF; border: 1px solid #E2E8EB; transition: transform 0.3s;">
+                        <div class="inside0-frame">
+                            <div class="module">Volkswagen Golf R</div>
+                            <div class="price">
+                                <div class="dolar-sign">PLN</div>
+                                <div class="cost">750</div>
+                                <div class="period">/day</div>
+                            </div>
+                            <img src="images/cars/Car_2.png" alt="check" class="custom-image">
+                        </div>
+                        <div class="inside1-frame">
+                            <div class="description">The Volkswagen Golf R gained fame for being a great car with a sporty character, yet fully suitable for everyday use.</div>
+                            <div class="icon-box">
+                                <div class="small-icon-box">
+                                    <div class="pros">
+                                        <img src="images/icon_Tank.png" alt="check" class="custom-icon">
+                                        <div class="text">Disel</div>
+                                    </div>
+                                    <div class="pros">
+                                        <img src="images/icon_Transmission.png" alt="check" class="custom-icon">
+                                        <div class="text">Automatic</div>
+                                    </div>
+                                </div>
+                                <div class="small-icon-box">
+                                    <div class="pros">
+                                        <img src="images/icon_Luggage.png" alt="check" class="custom-icon">
+                                        <div class="text">300l</div>
+                                    </div>
+                                    <div class="pros">
+                                        <img src="images/icon_1_to_100.png" alt="check" class="custom-icon">
+                                        <div class="text">5s</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="get-started" href="nowhere"><div class="start-text">Rent the car</div></a>
+                        </div>
+                    </div>
+                    <div class="box" style="background-color: #FFFFFF; border: 1px solid #E2E8EB; transition: transform 0.3s;">
+                        <div class="inside0-frame">
+                            <div class="module">Volkswagen Golf R</div>
+                            <div class="price">
+                                <div class="dolar-sign">PLN</div>
+                                <div class="cost">750</div>
+                                <div class="period">/day</div>
+                            </div>
+                            <img src="images/cars/Car_2.png" alt="check" class="custom-image">
+                        </div>
+                        <div class="inside1-frame">
+                            <div class="description">The Volkswagen Golf R gained fame for being a great car with a sporty character, yet fully suitable for everyday use.</div>
+                            <div class="icon-box">
+                                <div class="small-icon-box">
+                                    <div class="pros">
+                                        <img src="images/icon_Tank.png" alt="check" class="custom-icon">
+                                        <div class="text">Disel</div>
+                                    </div>
+                                    <div class="pros">
+                                        <img src="images/icon_Transmission.png" alt="check" class="custom-icon">
+                                        <div class="text">Automatic</div>
+                                    </div>
+                                </div>
+                                <div class="small-icon-box">
+                                    <div class="pros">
+                                        <img src="images/icon_Luggage.png" alt="check" class="custom-icon">
+                                        <div class="text">300l</div>
+                                    </div>
+                                    <div class="pros">
+                                        <img src="images/icon_1_to_100.png" alt="check" class="custom-icon">
+                                        <div class="text">5s</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="get-started" href="nowhere"><div class="start-text">Rent the car</div></a>
+                        </div>
+                    </div>
+                    <div class="box" style="background-color: #FFFFFF; border: 1px solid #E2E8EB; transition: transform 0.3s;">
+                        <div class="inside0-frame">
+                            <div class="module">Volkswagen Golf R</div>
+                            <div class="price">
+                                <div class="dolar-sign">PLN</div>
+                                <div class="cost">750</div>
+                                <div class="period">/day</div>
+                            </div>
+                            <img src="images/cars/Car_2.png" alt="check" class="custom-image">
+                        </div>
+                        <div class="inside1-frame">
+                            <div class="description">The Volkswagen Golf R gained fame for being a great car with a sporty character, yet fully suitable for everyday use.</div>
+                            <div class="icon-box">
+                                <div class="small-icon-box">
+                                    <div class="pros">
+                                        <img src="images/icon_Tank.png" alt="check" class="custom-icon">
+                                        <div class="text">Disel</div>
+                                    </div>
+                                    <div class="pros">
+                                        <img src="images/icon_Transmission.png" alt="check" class="custom-icon">
+                                        <div class="text">Automatic</div>
+                                    </div>
+                                </div>
+                                <div class="small-icon-box">
+                                    <div class="pros">
+                                        <img src="images/icon_Luggage.png" alt="check" class="custom-icon">
+                                        <div class="text">300l</div>
+                                    </div>
+                                    <div class="pros">
+                                        <img src="images/icon_1_to_100.png" alt="check" class="custom-icon">
+                                        <div class="text">5s</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="get-started" href="nowhere"><div class="start-text">Rent the car</div></a>
+                        </div>
+                    </div>
+                    <div class="box" style="background-color: #FFFFFF; border: 1px solid #E2E8EB; transition: transform 0.3s;">
+                        <div class="inside0-frame">
+                            <div class="module">Volkswagen Golf R</div>
+                            <div class="price">
+                                <div class="dolar-sign">PLN</div>
+                                <div class="cost">750</div>
+                                <div class="period">/day</div>
+                            </div>
+                            <img src="images/cars/Car_2.png" alt="check" class="custom-image">
+                        </div>
+                        <div class="inside1-frame">
+                            <div class="description">The Volkswagen Golf R gained fame for being a great car with a sporty character, yet fully suitable for everyday use.</div>
+                            <div class="icon-box">
+                                <div class="small-icon-box">
+                                    <div class="pros">
+                                        <img src="images/icon_Tank.png" alt="check" class="custom-icon">
+                                        <div class="text">Disel</div>
+                                    </div>
+                                    <div class="pros">
+                                        <img src="images/icon_Transmission.png" alt="check" class="custom-icon">
+                                        <div class="text">Automatic</div>
+                                    </div>
+                                </div>
+                                <div class="small-icon-box">
+                                    <div class="pros">
+                                        <img src="images/icon_Luggage.png" alt="check" class="custom-icon">
+                                        <div class="text">300l</div>
+                                    </div>
+                                    <div class="pros">
+                                        <img src="images/icon_1_to_100.png" alt="check" class="custom-icon">
+                                        <div class="text">5s</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="get-started" href="nowhere"><div class="start-text">Rent the car</div></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="footer-frame" id="footer">
@@ -53,11 +358,11 @@
                 <img class="responsive-image" src="images/icon.png">
             </div>
             <div class="box1-3">
-                <div class="footerText">kontakt@rentcars.pl</div>
+                <div class="footerText">kontakt@Carental.pl</div>
             </div>
         </div>
         <div class="footer-copyright">
-            <div class="footerCopyright">© 2024 Express Car Rental. Wszelkie prawa zastrzeżone</div>
+            <div class="footerCopyright">© 2024 Carental. Wszelkie prawa zastrzeżone</div>
         </div>
     </div>
 
@@ -65,6 +370,15 @@
 </html>
 
 
+<script type="text/javascript" src="external/customModernizr.js"></script>
+<script type="text/javascript" src="calendar.js"></script>
+<script type="text/javascript">
+    $(".jsCalendar").bind("startDateChanged", function () {
+        $(this).data("startdate");
+    }).bind("endDateChanged", function () {
+        $(this).data("enddate");
+    });
+</script>
 <script>
     window.addEventListener('scroll', function () {
         const header = document.getElementById('header');
@@ -74,4 +388,167 @@
             header.classList.remove('scrolled');
         }
     });
+</script>
+<script>
+    const input = document.getElementById('pick-up-place');
+    const dropdown = document.getElementById('locations-dropdown');
+    const checkbox = document.getElementById('checkbox1');
+    const dropOffSection = document.getElementById('drop-off-section');
+    const dropOffInput = document.getElementById('drop-off-place');
+    const dropOffDropdown = document.getElementById('dropoff-locations-dropdown');
+
+    // Pokazuje dropdown po kliknięciu w input
+    input.addEventListener('focus', () => {
+        dropdown.classList.remove('datalist-hidden');
+    });
+
+    // Ustawia wartość input na wybraną lokalizację i ukrywa dropdown
+    dropdown.addEventListener('click', (event) => {
+        if (event.target.tagName === 'DIV') {
+            input.value = event.target.textContent;
+            dropdown.classList.add('datalist-hidden');
+        }
+    });
+
+    // Ukrywa dropdown po kliknięciu w inną część strony
+    document.addEventListener('click', (event) => {
+        if (!input.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.add('datalist-hidden');
+        }
+    });
+
+    // Pokazuje dropdown po kliknięciu w input
+    input.addEventListener('click', () => {
+        dropdown.classList.remove('datalist-hidden');
+    });
+
+    // Zapobiega zniknięciu dropdown po kliknięciu wewnątrz dropdown
+    dropdown.addEventListener('mousedown', (event) => {
+        event.preventDefault();
+    });
+
+    // Pokaż/ukryj sekcję drop-off po zaznaczeniu checkboxa
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            dropOffSection.classList.remove('datalist-hidden'); // Pokaż drop-off section
+        } else {
+            dropOffSection.classList.add('datalist-hidden'); // Ukryj drop-off section
+        }
+    });
+
+    // Obsługa dropdownu dla drop-off location
+    dropOffInput.addEventListener('focus', () => {
+        dropOffDropdown.classList.remove('datalist-hidden');
+    });
+
+    dropOffDropdown.addEventListener('click', (event) => {
+        if (event.target.tagName === 'DIV') {
+            dropOffInput.value = event.target.textContent;
+            dropOffDropdown.classList.add('datalist-hidden');
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!dropOffInput.contains(event.target) && !dropOffDropdown.contains(event.target)) {
+            dropOffDropdown.classList.add('datalist-hidden');
+        }
+    });
+
+    dropOffInput.addEventListener('click', () => {
+        dropOffDropdown.classList.remove('datalist-hidden');
+    });
+
+    dropOffDropdown.addEventListener('mousedown', (event) => {
+        event.preventDefault();
+    });
+</script>
+<script>
+    const times = [
+        "12:00am", "12:30am", "1:00am", "1:30am", "2:00am", "2:30am", "3:00am", "3:30am",
+        "4:00am", "4:30am", "5:00am", "5:30am", "6:00am", "6:30am", "7:00am", "7:30am",
+        "8:00am", "8:30am", "9:00am", "9:30am", "10:00am", "10:30am", "11:00am", "11:30am",
+        "12:00pm", "12:30pm", "1:00pm", "1:30pm", "2:00pm", "2:30pm", "3:00pm", "3:30pm",
+        "4:00pm", "4:30pm", "5:00pm", "5:30pm", "6:00pm", "6:30pm", "7:00pm", "7:30pm",
+        "8:00pm", "8:30pm", "9:00pm", "9:30pm", "10:00pm", "10:30pm", "11:00pm", "11:30pm"
+    ];
+
+    function populateTimeOptions(selectId) {
+        const select = document.getElementById(selectId);
+        times.forEach(time => {
+            const option = document.createElement('option');
+            option.value = time;
+            option.text = time;
+            select.appendChild(option);
+        });
+    }
+
+    populateTimeOptions('time');  // For Pick up time
+    populateTimeOptions('time1'); // For Drop off time
+</script>
+<script>
+    document.querySelectorAll('.choice-box').forEach(box => {
+        box.addEventListener('click', function () {
+            // Sprawdzamy, czy kliknięty bloczek jest już aktywny
+            if (this.classList.contains('active')) {
+                // Jeśli jest aktywny, usuwamy klasę 'active'
+                this.classList.remove('active');
+            } else {
+                // Usuwamy klasę 'active' ze wszystkich innych bloczków
+                document.querySelectorAll('.choice-box').forEach(b => b.classList.remove('active'));
+
+                // Dodajemy klasę 'active' do klikniętego bloczka
+                this.classList.add('active');
+            }
+        });
+    });
+</script>
+
+<script>
+    // Funkcja do obsługi kliknięć w opcjach filtra
+    document.querySelectorAll('.filter-specified-box').forEach(box => {
+        box.addEventListener('click', function () {
+            const isActive = this.classList.contains('active');
+            const parentBox = this.closest('.filter-box'); // Znajdujemy sekcję nadrzędną
+            const isShowAll = this.getAttribute('id') === 'show-all';
+            const isVehicleTypeSection = parentBox.getAttribute('data-category') === 'vehicle-type';
+
+            // Jeśli kliknięto na "Show all" w sekcji "Vehicle type"
+            if (isVehicleTypeSection && isShowAll) {
+                if (!isActive) {
+                    // Zaznaczamy "Show all" i odznaczamy inne opcje w sekcji "Vehicle type"
+                    this.classList.add('active');
+                    parentBox.querySelectorAll('.filter-specified-box').forEach(opt => {
+                        if (opt !== this) {
+                            opt.classList.remove('active');
+                        }
+                    });
+                } else {
+                    // Odznaczamy "Show all", jeśli było zaznaczone
+                    this.classList.remove('active');
+                }
+            } else if (isVehicleTypeSection) {
+                // Jeśli zaznaczono inną opcję niż "Show all" w sekcji "Vehicle type"
+                if (!isActive) {
+                    this.classList.add('active');
+                    parentBox.querySelector('#show-all').classList.remove('active'); // Odznaczamy "Show all"
+                } else {
+                    this.classList.remove('active');
+                }
+            } else {
+                // Jeśli kliknięto w opcje w innych sekcjach (Transmission, Cost)
+                this.classList.toggle('active');
+            }
+
+            // Wysyłamy informację o stanie do bazy lub logiki
+            const filterType = this.getAttribute('data-filter');
+            const status = !isActive ? 'selected' : 'deselected';
+            sendStatusToDatabase(filterType, status);
+        });
+    });
+
+    function sendStatusToDatabase(filterType, status) {
+        console.log(`Filter: ${filterType}, Status: ${status}`);
+        // Przykład wysyłania do bazy lub API:
+        // fetch('/api/update-filter', { method: 'POST', body: JSON.stringify({ filterType, status }) });
+    }
 </script>

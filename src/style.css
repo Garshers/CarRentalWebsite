@@ -12,14 +12,17 @@
 }
 
     .mid_content {
-        width: 100%;
-        min-height: 500px;
+        width: 90%;
+        max-width: 1080px;
+        min-height: 700px;
         height: fit-content;
-        /*border: 2px solid red;*/
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 10px;
+        margin: -120px auto;
+        padding: 140px 20px 120px;
+        gap: 20px;
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 3%, rgba(255, 255, 255, 0.5) 97%, rgba(255, 255, 255, 0) 100%);
     }
     .time-choice {
         font-family: 'Source Sans Pro';
@@ -69,14 +72,14 @@
     }
     .module{
         width: fit-content;
-        height: 24px;
+        height: fit-content;
+        min-height: 24px;
         font-family: 'Source Sans Pro';
         font-style: normal;
         font-weight: 600;
         Font-size: 24px;
         Line-height: 24px;
         Line-height: 100%;
-        margin: 32px auto 16px 10.2564%;
         letter-spacing: -0.03em;
     }
     .dolar-sign{
@@ -109,9 +112,8 @@
         color: #989BB4;
         align-self: flex-end;   
     }
-    .description{
-        width: 78.2051%;
-        margin: 0px 0px 10px 10.2564%;
+    .description {
+        width: 100%;
         font-family: 'Source Sans Pro';
         font-style: normal;
         font-weight: 400;
@@ -138,7 +140,7 @@
         font-family: 'Source Sans Pro';
         font-style: normal;
         font-weight: 600;
-        font-size: 14px;
+        font-size: 24px;
         line-height: 100%;
         letter-spacing: -0.01em;
         color: #FFFFFF;
@@ -146,4 +148,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    @media screen and (max-width: 1090px) {
+
     }

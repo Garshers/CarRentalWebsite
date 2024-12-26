@@ -12,17 +12,16 @@
 .form-container {
     width: 400px;
     height: fit-content;
-    align-self: end;
     /*border: 1px solid red;*/
     display: flex;
     flex-direction: column;
-    top: 50px;
     min-height: 200px;
     padding: 10px;
     gap: 10px;
-    background-color: #14132B;
     border-radius: 10px;
-    margin: 0 100px 0 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid #E2E8EB;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
     .pick-up-text {
         font-family: 'Source Sans Pro';
@@ -34,7 +33,7 @@
         text-align: center;
         letter-spacing: -0.03em;
     }
-.form-container .pick-up-location {
+.pick-up-location {
     width: 100%;
     height: fit-content;
     min-height: 50px;
@@ -45,25 +44,32 @@
     padding: 5px;
     background-color: #FFFFFF;
     border-radius: 5px;
+    border: 1px solid #E2E8EB;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-    .form-container .pick-up-location .pick-up-place {
+    .pick-up-location #pick-up-place {
         width: 100%;
         height: fit-content;
         min-height: 30px;
         /*border: 1px solid red;*/
+        border: 1px solid gray;
         display: flex;
         flex-direction: row;
         border-radius: 5px;
         padding: 5px;
-        background: #14132B;
     }
-    .form-container .pick-up-location .pick-up-place:hover {
-        background-color: #393850;
+    .pick-up-location #drop-off-place {
+        width: 100%;
+        height: fit-content;
+        min-height: 30px;
+        display: flex;
+        border: 1px solid gray;
+        flex-direction: row;
+        border-radius: 5px;
+        padding: 5px;
+        margin-top: 5px;
     }
 
-    .form-container .pick-up-location .pick-up-place:active {
-        background-color: #060613;
-    }
     .custom-checkbox {
         display: none;
     }
@@ -86,7 +92,7 @@
         top: 0;
         left: 0;
     }
-    .form-container .pick-up-location .pick-up-return {
+.pick-up-location .pick-up-return {
         width: 100%;
         height: fit-content;
         min-height: 20px;
@@ -97,7 +103,7 @@
         align-items: center;
         padding: 5px;
     }
-.form-container .pick-up-date {
+.pick-up-date {
     width: 100%;
     height: fit-content;
     min-height: 50px;
@@ -107,8 +113,10 @@
     flex-direction: row;
     background-color: #FFFFFF;
     border-radius: 5px;
+    border: 1px solid #E2E8EB;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-    .form-container .pick-up-date .date-container {
+.pick-up-date .date-container {
         width: 100%;
         height: fit-content;
         min-height: 50px;
@@ -116,7 +124,7 @@
         padding: 5px;
         /*border: 1px solid red;*/
     }
-    .form-container .pick-up-date .date-container .calendar-container {
+.pick-up-date .date-container .calendar-container {
         width: 100%;
         height: fit-content;
         min-height: 200px;
@@ -124,7 +132,7 @@
         padding: 5px;
         /*border: 1px solid red;*/
     }
-    .form-container .pick-up-date .date-container .time-container {
+.pick-up-date .date-container .time-container {
         width: 100%;
         height: fit-content;
         min-height: 30px;
@@ -133,7 +141,7 @@
         /*border: 1px solid red;*/
         display: flex;
     }
-    .form-container .pick-up-date .date-container .time-container .stime {
+    .pick-up-date .date-container .time-container .stime {
         width: 50%;
         height: fit-content;
         min-height: 20px;
@@ -142,7 +150,7 @@
         /*border: 1px solid red;*/
         display: flex;
     }
-.form-container .bot-container {
+.bot-container {
     width: 100%;
     height: fit-content;
     min-height: 50px;
@@ -155,8 +163,10 @@
     background-color: #FFFFFF;
     border-radius: 5px;
     gap: 5px;
+    border: 1px solid #E2E8EB;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-    .form-container .bot-container .search-container {
+    .bot-container .search-container {
         width: 200px;
         min-height: 50px;
         height: fit-content;
@@ -167,6 +177,7 @@
         margin-left: auto;
         background-color: #14132B;
         border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     .form-container .bot-container .search-container:hover {
         background-color: #393850;
@@ -215,8 +226,14 @@
 
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 1000px) {
         .form-container {
             margin: auto;
+        }
+    }
+
+    @media screen and (max-width: 420px) {
+        .form-container {
+            width: 100%;
         }
     }

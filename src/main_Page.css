@@ -16,16 +16,110 @@ html, body {
     z-index: -1;
     animation: slideShow 30s infinite;
 }
-
-.content {
-    position: relative;
-    z-index: 1;
-    color: white;
+.map{
+    width: 90%;
+    height: auto;
+    margin: 0 5% 0;
+}
+.gallery-container {
+    width: 100%;
+    min-height: 100px;
+    height: fit-content;
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    padding: 15px;
+}
+.mid-container {
+    width: 50%;
+    height: 100%;
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.small-container {
+    width: 50%;
+    height: 100%;
+    /*border: 1px solid red;*/
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 5px 20px 5px;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #E2E8EB;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease;
+}
+.small-container:hover {
+    transform: scale(1.05);
+    box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.3);
+}
+.gallery-cars{
+    width: 100%;
+}
+.gallery-car-title {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    Line-height: 100%;
+    color: #14132B;
     text-align: center;
-    padding-top: 50px;
+    letter-spacing: -0.03em;
+}
+.gallery-car-description {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    Line-height: 100%;
+    color: #14132B;
+    text-align: center;
+    letter-spacing: -0.03em;
+}
+.big-text-container {
+    width: 100%;
+    min-height: 100px;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    padding-top: 40px;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 5%, rgba(255, 255, 255, 0.7) 100%);
+}
+.text-container {
+    width: 50%;
+    min-height: 100px;
+    height: fit-content;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #14132B;
+    letter-spacing: -0.01em;
+    padding: 25px;
 }
 
-
+@media screen and (max-width: 1000px) {
+    .gallery-container {
+        flex-direction: column;
+    }
+    .mid-container {
+        width: 100%;
+    }
+    .big-text-container {
+        flex-direction: column;
+    }
+    .text-container {
+        width: 100%;
+    }
+    .small-container .title {
+        font-size: 32px;
+    }
+}
 
 @keyframes slideShow {
     0% {

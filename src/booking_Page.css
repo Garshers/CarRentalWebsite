@@ -1,0 +1,133 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.booking-content {
+    width: 90%;
+    max-width: 1200px;
+    min-height: 700px;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    margin: -120px auto;
+    padding: 140px 10px 140px;
+    gap: 10px;
+    /*border: 1px solid red;*/
+}
+.left-box {
+    min-height: 100px;
+    height: fit-content;
+    width: fit-content;
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.right-box {
+    min-height: 100px;
+    height: fit-content;
+    flex-grow: 1;
+    /*border: 1px solid red;*/
+    display: flex;
+    flex-direction: column;
+}
+.filter-container {
+    width: 100%;
+    min-height: 100px;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #E2E8EB;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.filter-title {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    Line-height: 100%;
+    color: #14132B;
+    text-align: center;
+    letter-spacing: -0.03em;
+    /*border: 1px solid red;*/
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #E2E8EB;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.filter-box {
+    width: 100%;
+    min-height: 20px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    /*border: 1px solid red;*/
+    gap: 5px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #E2E8EB;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px 8px 10px;
+}
+.filter-subtitle {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    Line-height: 100%;
+    color: #14132B;
+    letter-spacing: -0.03em;
+    padding-bottom: 5px;
+}
+.filter-specified-box{
+    width: 100%;
+    min-height: 10px;
+    height: fit-content;
+    display:flex;
+    flex-direction: row;
+    gap: 2px;
+    /*border: 1px solid red;*/
+}
+.check-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #14132B;
+    margin-right: 10px;
+    background-color: white;
+    display: inline-block;
+    border-radius: 4px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.filter-specified-box.active .check-box {
+    background-color: #14132B;
+    border-color: black;
+}
+.filter-specified-box:hover {
+    background-color: #f0f0f0;
+}
+.filter-specification-text {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    Line-height: 100%;
+    color: #14132B;
+    letter-spacing: -0.03em;
+}
+
+@media screen and (max-width: 1000px) {
+    .booking-content{
+        flex-direction: column;
+        align-items: center;
+    }
+    .right-box {
+        width: 100%;
+    }
+}
