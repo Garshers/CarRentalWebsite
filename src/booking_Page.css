@@ -36,6 +36,7 @@ html, body {
 }
 .filter-container {
     width: 100%;
+    max-width: 400px;
     min-height: 100px;
     height: fit-content;
     padding: 10px;
@@ -58,7 +59,7 @@ html, body {
     /*border: 1px solid red;*/
     background-color: white;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
     border: 1px solid #E2E8EB;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -129,5 +130,13 @@ html, body {
     }
     .right-box {
         width: 100%;
+    }
+    .left-box {
+        flex-direction: row;
+    }
+}
+@media screen and (max-width: 850px) {
+    .left-box {
+        flex-direction: column;
     }
 }

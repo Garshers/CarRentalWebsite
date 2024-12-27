@@ -17,9 +17,9 @@ html, body {
     animation: slideShow 30s infinite;
 }
 .map{
-    width: 90%;
+    width: 80%;
+    align-self: center;
     height: auto;
-    margin: 0 5% 0;
 }
 .gallery-container {
     width: 100%;
@@ -61,6 +61,7 @@ html, body {
     width: 100%;
 }
 .gallery-car-title {
+    padding-top: 100px;
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 600;
@@ -89,8 +90,8 @@ html, body {
     padding-top: 40px;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 5%, rgba(255, 255, 255, 0.7) 100%);
 }
-.text-container {
-    width: 50%;
+#text-container {
+    width: 100%;
     min-height: 100px;
     height: fit-content;
     font-family: 'Source Sans Pro';

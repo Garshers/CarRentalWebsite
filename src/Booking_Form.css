@@ -8,7 +8,21 @@
         height: 100vh;
         margin: 0;
     }
-
+.parent-form-container {
+    width: 100%;
+    min-height: 400px;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    gap: 25px;
+}
+.map-container {
+    width: 100%;
+    height: fit-content;
+}
 .form-container {
     width: 400px;
     height: fit-content;
@@ -141,6 +155,17 @@
         /*border: 1px solid red;*/
         display: flex;
     }
+    .pick-up-date .date-container .summary {
+        width: 100%;
+        height: fit-content;
+        min-height: 30px;
+        align-items: center;
+        gap: 5px;
+        margin-top: 10px;
+        padding: 2px;
+        display: flex;
+        flex-direction: column;
+    }
     .pick-up-date .date-container .time-container .stime {
         width: 50%;
         height: fit-content;
@@ -166,23 +191,23 @@
     border: 1px solid #E2E8EB;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-    .bot-container .search-container {
+    .search-container {
         width: 200px;
         min-height: 50px;
         height: fit-content;
         /*border: 1px solid red;*/
         display: flex;
-        justify-content: center; /* Wyœrodkowanie zawartoœci poziomo */
-        align-items: center; /* Wyœrodkowanie zawartoœci pionowo */
+        justify-content: center; /* Wyï¿½rodkowanie zawartoï¿½ci poziomo */
+        align-items: center; /* Wyï¿½rodkowanie zawartoï¿½ci pionowo */
         margin-left: auto;
         background-color: #14132B;
         border-radius: 5px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-    .form-container .bot-container .search-container:hover {
+    .search-container:hover {
         background-color: #393850;
     }
-    .form-container .bot-container .search-container:active {
+    .search-container:active {
         background-color: #060613;
     }
     .pick-up-place {
@@ -223,13 +248,16 @@
 
 
     @media screen and (max-width: 1250px) {
-
+        .parent-form-container {
+            flex-direction: column;
+        }
     }
 
     @media screen and (max-width: 1000px) {
         .form-container {
             margin: auto;
         }
+        
     }
 
     @media screen and (max-width: 420px) {

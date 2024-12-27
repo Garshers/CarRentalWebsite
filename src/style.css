@@ -14,7 +14,7 @@
     .mid_content {
         width: 90%;
         max-width: 1080px;
-        min-height: 700px;
+        min-height: 94.9vh;
         height: fit-content;
         display: flex;
         flex-direction: column;

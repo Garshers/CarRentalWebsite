@@ -40,7 +40,25 @@
             drawSelection();
             $calendar.data(type.toLowerCase(), !value ? "" : value.toString());
             $calendar.trigger(type + "Changed");
-        },
+
+            // Użycie lokalnego formatu daty
+            if (startDate) {
+                const localStartDate = `${startDate.getFullYear()}-${(startDate.getMonth() + 1)
+                    .toString()
+                    .padStart(2, '0')}-${startDate.getDate().toString().padStart(2, '0')}`;
+                localStorage.setItem("startDate", localStartDate);
+            }
+            if (endDate) {
+                const localEndDate = `${endDate.getFullYear()}-${(endDate.getMonth() + 1)
+                    .toString()
+                    .padStart(2, '0')}-${endDate.getDate().toString().padStart(2, '0')}`;
+                localStorage.setItem("endDate", localEndDate);
+            }
+
+            // Debugowanie w konsoli
+            console.log("Wybrana data początkowa: ", startDate);
+            console.log("Wybrana data końcowa: ", endDate);
+        };
         
         dateSelected = function (evt) {
             evt.preventDefault();
