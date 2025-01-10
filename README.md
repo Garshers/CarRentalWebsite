@@ -34,15 +34,15 @@ By following these steps, you'll have the Carental website set up and running lo
 ## Features
 
 ### Home Page
-![Home Page Screenshot 0](src/images/readme/homepage0.png)
-![Home Page Screenshot 1](src/images/readme/homepage1.png)
+![Home Page - Desktop](src/images/readme/Home-Page.gif)
+![Home Page - Phone](src/images/readme/Home-Page-phone.gif)
 - Four tiles that navigate the user to the Car Portfolio page with corresponding URL filters
 - General information about the company
 - Map providing information about abroad restrictions
 
 ### Car Portfolio
-![Car Portfolio Page Screenshot 0](src/images/readme/carportfolio0.png)
-![Car Portfolio Page Screenshot 1](src/images/readme/carportfolio1.png)
+![Car Portfolio Page - Desktop](src/images/readme/Car-Portfolio-Page.gif)
+![Car Portfolio Page - Phone](src/images/readme/Car-Portfolio-Page-Phone.gif)
 - Displays the company's car portfolio (from XAMPP database)
 - Filters for the fleet:
   - City
@@ -105,6 +105,63 @@ By following these steps, you'll have the Carental website set up and running lo
 
 ## Database Integration
 - Database with car types, user accounts, login credentials, and passwords
+
+## Challanges durign production
+
+One of the most challenging encounters was creating JS scripts. This was difficult due to the vast complexity and the lack of repetition in those scripts.
+- Each project typically demands unique solutions, making it difficult to reuse patterns or templates. This lack of repetitiveness requires developers to innovate continuously. 
+- The dynamic characteristics of JavaScript make it both powerful and unpredictable. Issues such as runtime errors, variable scoping problems, and handling asynchronous operations can be particularly challenging and require an in-depth understanding of the language.
+The vast majority of the time was spent on integrating the calendar with the pages using JavaScript. This was particularly challenging due to our lack of knowledge of JavaScript at the time. We had to acquire that knowledge, which took a considerable amount of time.
+
+## Troubleshooting
+
+### "MySQL shutdown unexpectedly" Error in XAMPP**
+
+You may encounter the following error in XAMPP Control Panel:
+   ```bash
+   [mysql] Error: MySQL shutdown unexpectedly.
+   [mysql] This may be due to a blocked port, missing dependencies,
+   [mysql] improper privileges, a crash, or a shutdown by another method.
+   [mysql] Press the Logs button to view error logs and check
+   [mysql] the Windows Event Viewer for more clues.
+   [mysql] If you need more help, copy and post this
+   [mysql] entire log window on the forums.
+   ```
+***Important:*** Do not delete the `ibdata1` file as it contains critical data for your databases.
+
+1. **Stop MySQL Service:**
+   - Open XAMPP Control Panel.
+   - Stop the MySQL service if it is running.
+
+2. **Backup Existing Data:**
+   - Go to the `xampp/mysql` folder.
+   - Rename the `data` folder to `data_old`.
+
+3. **Restore from Backup:**
+   - Locate the `backup` folder inside `xampp/mysql`.
+   - Copy the `backup` folder and rename the copy to `data`.
+
+4. **Restore Your Databases:**
+   - Open the `data_old` folder.
+   - Copy all your database folders (except `mysql`, `performance_schema`, and `phpmyadmin`) into the new `data` folder.
+
+5. **Restore the `ibdata1` File:**
+   - Copy the `ibdata1` file from `data_old` to the new `data` folder.
+
+6. **Start MySQL:**
+   - Open XAMPP Control Panel.
+   - Start the MySQL service and verify that it runs successfully.
+
+
+#### Additional Notes
+
+- If MySQL still fails to start, check the `mysql_error.log` file located in the `xampp/mysql/data` folder for more details.
+- Ensure that no other application is using port **3306**. If there is a conflict, change the MySQL port in `my.ini` configuration file.
+
+### **Page Not Loading or 404 Error**:
+   - Verify that the application started successfully without errors. Check the terminal logs for any exceptions.
+   - Ensure that the URL `http://localhost:8080/sales` is correct.
+   - If the page is not loading, try restarting the application.
 
 ## License
 
