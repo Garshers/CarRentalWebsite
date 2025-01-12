@@ -34,17 +34,15 @@ By following these steps, you'll have the Carental website set up and running lo
 ## Features
 
 ### Home Page
-![Home Page - Desktop](src/images/readme/Home-Page.gif)
-![Home Page - Phone](src/images/readme/Home-Page-phone.gif)
-<img src="src/images/readme/Home-Page-phone.gif" alt="Home Page - Phone" width="50%" height="auto">
+<img src="src/images/readme/Home-Page.gif" alt="Home Page" width="71%" height="auto"> <img src="src/images/readme/Home-Page-phone.gif" alt="Home Page - Phone" width="28%" height="auto">
+
 - Four tiles that navigate the user to the Car Portfolio page with corresponding URL filters
 - General information about the company
 - Map providing information about abroad restrictions
 
 ### Car Portfolio
-![Car Portfolio Page - Desktop](src/images/readme/Car-Portfolio-Page.gif)
-![Car Portfolio Page - Phone](src/images/readme/Car-Portfolio-Page-Phone.gif)
-<img src="src/images/readme/Car-Portfolio-Page-Phone.gif" alt="Car Portfolio Page - Phone" width="50%" height="auto">
+<img src="src/images/readme/Car-Portfolio-Page.gif" alt="Car Portfolio Page - Desktop" width="71%" height="auto"> <img src="src/images/readme/Car-Portfolio-Page-Phone.gif" alt="Car Portfolio Page - Phone" width="28%" height="auto">
+
 - Displays the company's car portfolio (from XAMPP database)
 - Filters for the fleet:
   - City
