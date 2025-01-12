@@ -66,6 +66,7 @@
         </div>
 
         <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Database connection
             $servername = "localhost";
             $username = "root";
@@ -92,17 +93,17 @@
 
             // Walidacja numeru telefonu (tylko cyfry, np. minimum 7 i maksimum 15 znaków)
             if (!preg_match('/^[0-9]{7,15}$/', $phone)) {
-                die("Numer telefonu jest nieprawidłowy.");
+                die("<script>alert('Numer telefonu jest nieprawidłowy.');</script>");
             }
 
             // Walidacja adresu e-mail
             if (!filter_var($e_mail, FILTER_VALIDATE_EMAIL)) {
-                die("Adres e-mail jest nieprawidłowy.");
+                die("<script>alert('Adres e-mail jest nieprawidłowy.');</script>");
             }
 
             // Sprawdzenie długości hasła (np. minimum 8 znaków)
             if (strlen($passwd) < 8) {
-                die("Hasło musi mieć co najmniej 8 znaków.");
+                die("<script>alert('Hasło musi mieć co najmniej 8 znaków.');</script>");
             }
 
             // Hash the password
@@ -124,6 +125,7 @@
 
             $stmt->close();
             $conn->close();
+        }
         ?>
 
         <div id="footer"></div>

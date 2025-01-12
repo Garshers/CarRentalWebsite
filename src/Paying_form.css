@@ -15,7 +15,7 @@
 
     }
     .paying-choices {
-        min-height: 350px;
+        min-height: 200px;
         border-radius: 24px;
         padding: 20px;
         
@@ -44,8 +44,7 @@
         height: fit-content;
         width: 100%;
         display: flex;
-        flex-direction: row;
-        
+        flex-direction: row;  
     }
     .summary{
         width: 100%;

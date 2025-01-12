@@ -84,64 +84,70 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="filter-container">
                     <div class="filter-title">Filtering</div>
-                    <div class="filter-box" data-category="model/number-type">
-                        <div class="filter-subtitle">Text filtering</div>
-                        <input class="filter-specified-box" style="padding: 5px;  border-radius: 5px;" type="text" id="car-name" name="carName"/>
-                    </div>
-                    <div class="filter-box" data-category="vehicle-type">
+                
+                    <div class="filter-box" data-category="category">
                         <div class="filter-subtitle">Vehicle type</div>
-                        <div class="filter-specified-box" data-filter="car-kind-1" id="show-all">
+                        <div class="filter-specified-box" data-filter="city" onclick="applyFilter('category', 'city')" id="show-all">
                             <div class="check-box"></div>
-                            <div class="filter-specification-text">Show all</div>
+                            <div class="filter-specification-text">City</div>
                         </div>
-                        <div class="filter-specified-box" data-filter="car-kind-2">
+                        <div class="filter-specified-box" data-filter="SUV" onclick="applyFilter('category', 'SUV')">
                             <div class="check-box"></div>
-                            <div class="filter-specification-text">Passenger</div>
+                            <div class="filter-specification-text">Suv</div>
                         </div>
-                        <div class="filter-specified-box" data-filter="car-kind-3">
+                        <div class="filter-specified-box" data-filter="sport" onclick="applyFilter('category', 'sport')">
+                            <div class="check-box"></div>
+                            <div class="filter-specification-text">Sports</div>
+                        </div>
+                        <div class="filter-specified-box" data-filter="van" onclick="applyFilter('category', 'van')">
                             <div class="check-box"></div>
                             <div class="filter-specification-text">Van</div>
                         </div>
-                        <div class="filter-specified-box" data-filter="car-kind-4">
-                            <div class="check-box"></div>
-                            <div class="filter-specification-text">Delivery van</div>
-                        </div>
-                        <div class="filter-specified-box" data-filter="car-kind-5">
+                        <div class="filter-specified-box" data-filter="electric" onclick="applyFilter('category', 'electric')">
                             <div class="check-box"></div>
                             <div class="filter-specification-text">Electric</div>
+                        </div>
+                        <div class="filter-specified-box" data-filter="luxury" onclick="applyFilter('category', 'luxury')">
+                            <div class="check-box"></div>
+                            <div class="filter-specification-text">Luxury</div>
+                        </div>
+                        <div class="filter-specified-box" data-filter="truck" onclick="applyFilter('category', 'truck')">
+                            <div class="check-box"></div>
+                            <div class="filter-specification-text">Truck</div>
                         </div>
                     </div>
 
                     <div class="filter-box" data-category="transmission">
                         <div class="filter-subtitle">Transmission</div>
-                        <div class="filter-specified-box" data-filter="transmission-1">
+                        <div class="filter-specified-box" data-filter="manual" onclick="applyFilter('transmission', 'manual')">
                             <div class="check-box"></div>
                             <div class="filter-specification-text">Manual</div>
                         </div>
-                        <div class="filter-specified-box" data-filter="transmission-2">
+                        <div class="filter-specified-box" data-filter="automatic" onclick="applyFilter('transmission', 'automatic')">
                             <div class="check-box"></div>
                             <div class="filter-specification-text">Automatic</div>
                         </div>
                     </div>
 
-                    <div class="filter-box" data-category="cost">
+                    <div class="filter-box" data-category="tank">
                         <div class="filter-subtitle">Fuel type</div>
-                        <div class="filter-specified-box" data-filter="cost-1">
+                        <div class="filter-specified-box" data-filter="benzyna" onclick="applyFilter('tank', 'benzyna')">
                             <div class="check-box"></div>
                             <div class="filter-specification-text">Gasoline/Petrol</div>
                         </div>
-                        <div class="filter-specified-box" data-filter="cost-2">
+                        <div class="filter-specified-box" data-filter="diesel" onclick="applyFilter('tank', 'diesel')">
                             <div class="check-box"></div>
-                            <div class="filter-specification-text">Disel</div>
+                            <div class="filter-specification-text">Diesel</div>
                         </div>
                     </div>
 
                     <div class="bot-container">
                         <div class="content0">Driver's country of residence is Poland and age is 30-65</div>
-                        <div class="search-container">
-                            <div class="pick-up-text" style="color: #FFFFFF;">Search</div>
+                        <div class="search-container" onclick="resetFilters()">
+                            <div class="reset-button" style="color: #FFFFFF;">Reset Filters</div>
                         </div>
                     </div>
                 </div>
@@ -157,10 +163,42 @@
                     $conn = new mysqli($servername, $username, $password, $dbname);
 
                     // Fetching the list of cars from the database, ordered by brand
-        
-                    $sql1 = "SELECT * FROM cars ORDER BY brand";
-                    $result1 = $conn->query($sql1);
-
+                    $filters = [];
+                    if (isset($_GET['category'])) {
+                        $filters['category'] = $_GET['category'];
+                    }
+                    if (isset($_GET['transmission'])) {
+                        $filters['transmission'] = $_GET['transmission'];
+                    }
+                    if (isset($_GET['tank'])) {
+                        $filters['tank'] = $_GET['tank'];
+                    }
+                    
+                    $sql = "SELECT * FROM cars";
+                    $conditions = [];
+                    $params = [];
+                
+                    if (!empty($filters)) {
+                        foreach ($filters as $key => $value) {
+                            $conditions[] = "$key = ?";
+                            $params[] = $value;
+                        }
+                    }
+                
+                    if (count($conditions) > 0) {
+                        $sql .= " WHERE " . implode(" AND ", $conditions);
+                    }
+                
+                    $stmt = $conn->prepare($sql);
+                
+                    if (count($params) > 0) {
+                        $types = str_repeat("s", count($params)); 
+                        $stmt->bind_param($types, ...$params);
+                    }
+                
+                    // Wykonanie zapytania
+                    $stmt->execute();
+                    $result1 = $stmt->get_result();
                     // Checking if there are any results
                     if ($result1->num_rows > 0) {
 
@@ -218,12 +256,10 @@
                     echo '</div>'; // Closing last content-frame
                     }
                     else {
-                        echo '<div class="container">';
-                        while($row = $result1->fetch_assoc()) {
-                            echo '<div id="kafelek"><h3>' . $row["brand"] . '</h3>';
-                            echo '<p>' . $row["model"] . '</p></div>';
-                            echo '<p>' . $row["engine"] . '</p></div>';
-                        }
+                        // If no cars are found, display a message indicating this
+                        echo '<div class="no-cars-message" style="justify-items: center;">';
+                        echo '<h3>No cars available that match the selected filters.</h3>';
+                        echo '<p>Please try adjusting your filters or check back later.</p>';
                         echo '</div>';
                     }
                     $conn->close();
@@ -623,92 +659,94 @@
 ------------------------------------------------------------------------------------
 -->
 <script>
-    // This script supports activation of selected boxes
-    // Loop through all elements with the class 'choice-box'
-    document.querySelectorAll('.choice-box').forEach(box => {
-        box.addEventListener('click', function () {
-            // Check if the clicked box is already active
-            if (this.classList.contains('active')) {
-                // If it's active, remove the 'active' class
-                this.classList.remove('active');
-            } else {
-                // Remove the 'active' class from all other boxes
-                document.querySelectorAll('.choice-box').forEach(b => b.classList.remove('active'));
-
-                // Add the 'active' class to the clicked box
-                this.classList.add('active');
-            }
-        });
-    });
-</script>
-<script>
-    // Function to handle clicks on filter options
-    document.querySelectorAll('.filter-specified-box').forEach(box => {
-        box.addEventListener('click', function () {
-            const isActive = this.classList.contains('active');
-            const parentBox = this.closest('.filter-box'); // Find the parent section
-            const isShowAll = this.getAttribute('id') === 'show-all';
-            const isVehicleTypeSection = parentBox.getAttribute('data-category') === 'vehicle-type';
-
-            // If "Show all" was clicked in the "Vehicle type" section
-            if (isVehicleTypeSection && isShowAll) {
-                if (!isActive) {
-                    // Select "Show all" and deselect other options in the "Vehicle type" section
-                    this.classList.add('active');
-                    parentBox.querySelectorAll('.filter-specified-box').forEach(opt => {
-                        if (opt !== this) {
-                            opt.classList.remove('active');
-                        }
-                    });
-                } else {
-                    // Deselect "Show all" if it was already selected
-                    this.classList.remove('active');
-                }
-            } else if (isVehicleTypeSection) {
-                // If another option besides "Show all" was selected in the "Vehicle type" section
-                if (!isActive) {
-                    this.classList.add('active');
-                    parentBox.querySelector('#show-all').classList.remove('active'); // Deselect "Show all"
-                } else {
-                    this.classList.remove('active');
-                }
-            } else {
-                // If an option in other sections (Transmission, Cost) was clicked
-                this.classList.toggle('active');
-            }
-
-            // Send the status information to the database or logic handler
-            const filterType = this.getAttribute('data-filter');
-            const status = !isActive ? 'selected' : 'deselected';
-            sendStatusToDatabase(filterType, status);
-        });
-    });
-
-    function sendStatusToDatabase(filterType, status) {
-        console.log(`Filter: ${filterType}, Status: ${status}`);
-        // Example of sending to a database or API:
-        // fetch('/api/update-filter', { method: 'POST', body: JSON.stringify({ filterType, status }) });
-    }
-
+    // Function to get a query parameter from the URL
     function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
     }
 
+    // Function to set filters based on the URL
     function setFilterFromURL() {
-        const vehicleType = getQueryParam('vehicle'); // Get the 'vehicle' parameter from the URL
-        
+        // Get URL parameters for each filter category
+        const vehicleType = getQueryParam('category');
+        const transmissionType = getQueryParam('transmission');
+        const fuelType = getQueryParam('tank');
+
+        // Set the filter for vehicle category (vehicle type)
         if (vehicleType) {
-            // Example: Set the appropriate filter on the page based on the passed parameter
-            const filterBox = document.querySelector(`.filter-specified-box[data-filter="${vehicleType}"]`);
-            if (filterBox) {
-                // Select the appropriate box based on the URL parameter
-                filterBox.classList.add('active'); // Add the 'active' class to the box
-                filterBox.querySelector('.check-box').classList.add('checked'); // Mark the checkbox
+            const vehicleBox = document.querySelector(`.filter-specified-box[data-filter="${vehicleType}"]`);
+            if (vehicleBox) {
+                vehicleBox.classList.add('active');
+                vehicleBox.querySelector('.check-box').classList.add('checked');
+            }
+        }
+
+        // Set the filter for transmission type
+        if (transmissionType) {
+            const transmissionBox = document.querySelector(`.filter-specified-box[data-filter="${transmissionType}"]`);
+            if (transmissionBox) {
+                transmissionBox.classList.add('active');
+                transmissionBox.querySelector('.check-box').classList.add('checked');
+            }
+        }
+
+        // Set the filter for fuel type
+        if (fuelType) {
+            const fuelBox = document.querySelector(`.filter-specified-box[data-filter="${fuelType}"]`);
+            if (fuelBox) {
+                fuelBox.classList.add('active');
+                fuelBox.querySelector('.check-box').classList.add('checked');
             }
         }
     }
 
-    // Set the filters after the page is loaded
-    window.onload = setFilterFromURL;
+    // Function to activate filters based on URL
+    function setActiveFilters() {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.forEach((value, key) => {
+            document.querySelectorAll('.filter-specified-box').forEach(box => {
+                const filterType = box.getAttribute('data-filter');
+                if (key === 'category' && box.getAttribute('data-filter') === value) {
+                    box.classList.add('active');
+                    box.querySelector('.check-box').classList.add('checked');
+                } else if (key === 'transmission' && box.getAttribute('data-filter') === value) {
+                    box.classList.add('active');
+                    box.querySelector('.check-box').classList.add('checked');
+                } else if (key === 'tank' && box.getAttribute('data-filter') === value) {
+                    box.classList.add('active');
+                    box.querySelector('.check-box').classList.add('checked');
+                }
+            });
+        });
+    }
+
+    // Function to apply filters and update the URL
+    function applyFilter(filterCategory, filterValue) {
+        let url = new URL(window.location.href);
+        let params = new URLSearchParams(url.search);
+
+        // If the filter already exists in the URL, update its value
+        if (params.has(filterCategory)) {
+            params.set(filterCategory, filterValue);
+        } else {
+            // If the filter doesn't exist, add it
+            params.append(filterCategory, filterValue);
+        }
+
+        // Update the URL and reload the page
+        window.location.href = url.pathname + "?" + params.toString();
+    }
+
+    // Function to reset filters
+    function resetFilters() {
+        let url = new URL(window.location.href);
+        url.search = ''; // Remove all parameters from the URL
+        window.location.href = url.toString(); // Reload the page without filters
+    }
+
+    // Initialize functions after the page loads
+    window.onload = function() {
+        setFilterFromURL();
+        setActiveFilters(); // Set active filters based on URL parameters
+    }
 </script>

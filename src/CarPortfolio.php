@@ -127,7 +127,7 @@
                     echo '</div>';
                     echo '</div>';
                     // Pass car name directly to JavaScript function
-                    echo '<a class="get-started" href="#" onclick="setCarName(event, \'' . $car["brand"] . ' ' . $car["model"] . '\')"><div class="start-text">Rent the car</div></a>';
+                    echo '<a class="get-started" onclick="window.location.href=\'Booking.php\';"><div class="start-text">Rent our cars</div></a>';
                     echo '</div>';
                     echo '</div>';
                 }
@@ -200,25 +200,6 @@
             }
         });
     });
-</script>
-
-<script>
-    // Script to set car name and redirect to Booking.php
-    function setCarName(event, carName) {
-        event.preventDefault();
-
-        if (carName) {
-            sessionStorage.setItem('carName', carName);
-            //setTimeout(function () {
-            //    window.location.href = "Booking.php";
-            //}, 2000);
-
-            window.location.href = "Booking.php";
-
-        } else {
-            console.error('Error: Car name not provided.');
-        }
-    }
 </script>
 
 <script>
