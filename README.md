@@ -8,21 +8,21 @@ To set up and run the Carental website, you will need the following applications
 
 - **XAMPP**: A free and open-source cross-platform web server solution stack package, which includes Apache, MySQL, and PHP. You can download it from [https://www.apachefriends.org/index.html](https://www.apachefriends.org/index.html).
 - **Web Browser**: Any modern web browser such as Google Chrome, Firefox, Edge, or Safari.
-- **Text Editor/IDE**: An editor like Visual Studio Code, Sublime Text, or any other code editor of your choice.
+- **Text Editor/IDE (for making changes)**: An editor like Visual Studio Code, Sublime Text, or any other code editor of your choice.
 
 ### Setup Instructions
 
 1. **Install XAMPP**:
    - Download and install XAMPP from the official website.
-   - Once installed, start the Apache and MySQL services from the XAMPP Control Panel.
+   - Once installed, start the `Apache` and `MySQL` services from the XAMPP Control Panel.
 
 2. **Set Up the Database**:
    - Open PHPMyAdmin by navigating to `http://localhost/phpmyadmin` in your web browser.
-   - Import the database schema and seed data by using the provided file `SQL setup - wypozyczalnia.sql`. This file will create the necessary database tables and populate them with initial data.
+   - Import the database schema and seed data by using the provided file `SQL setup - wypozyczalnia.sql`. `SQL tab` -> ctrl + v *(inside blank space)* -> `Go` button. This file will create the necessary database tables and populate them with initial data.
 
 3. **Configure the Project**:
    - Create a folder named `Carental` in the `htdocs` directory of your XAMPP installation (usually found in `C:\xampp\htdocs` on Windows or `/Applications/XAMPP/htdocs` on macOS).
-   - Copy all your project files (PHP, JS, CSS) into the `Carental` folder.
+   - Copy all your project files (PHP, JS, CSS, etc.) into the `Carental` folder.
 
 4. **Run the Project**:
    - Make sure to check if the Apache server and MySQL is running from the XAMPP Control Panel.
@@ -34,14 +34,14 @@ By following these steps, you'll have the Carental website set up and running lo
 ## Features
 
 ### Home Page
-<img src="src/images/readme/Home-Page.gif" alt="Home Page" width="71%" height="auto"> <img src="src/images/readme/Home-Page-phone.gif" alt="Home Page - Phone" width="28%" height="auto">
+![Car Portfolio Page](src/images/readme/Home-Page.gif)
 
 - Four tiles that navigate the user to the Car Portfolio page with corresponding URL filters
 - General information about the company
 - Map providing information about abroad restrictions
 
 ### Car Portfolio
-<img src="src/images/readme/Car-Portfolio-Page.gif" alt="Car Portfolio Page - Desktop" width="71%" height="auto"> <img src="src/images/readme/Car-Portfolio-Page-Phone.gif" alt="Car Portfolio Page - Phone" width="28%" height="auto">
+![Car Portfolio Page](src/images/readme/Car-Portfolio-Page.gif)
 
 - Displays the company's car portfolio (from XAMPP database)
 - Filters for the fleet:
