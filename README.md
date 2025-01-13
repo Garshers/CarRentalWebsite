@@ -8,21 +8,21 @@ To set up and run the Carental website, you will need the following applications
 
 - **XAMPP**: A free and open-source cross-platform web server solution stack package, which includes Apache, MySQL, and PHP. You can download it from [https://www.apachefriends.org/index.html](https://www.apachefriends.org/index.html).
 - **Web Browser**: Any modern web browser such as Google Chrome, Firefox, Edge, or Safari.
-- **Text Editor/IDE**: An editor like Visual Studio Code, Sublime Text, or any other code editor of your choice.
+- **Text Editor/IDE (for making changes)**: An editor like Visual Studio Code, Sublime Text, or any other code editor of your choice.
 
 ### Setup Instructions
 
 1. **Install XAMPP**:
    - Download and install XAMPP from the official website.
-   - Once installed, start the Apache and MySQL services from the XAMPP Control Panel.
+   - Once installed, start the `Apache` and `MySQL` services from the XAMPP Control Panel.
 
 2. **Set Up the Database**:
    - Open PHPMyAdmin by navigating to `http://localhost/phpmyadmin` in your web browser.
-   - Import the database schema and seed data by using the provided file `SQL setup - wypozyczalnia.sql`. This file will create the necessary database tables and populate them with initial data.
+   - Import the database schema and seed data by using the provided file `SQL setup - wypozyczalnia.sql`. `SQL tab` -> ctrl + v *(inside blank space)* -> `Go` button. This file will create the necessary database tables and populate them with initial data.
 
 3. **Configure the Project**:
    - Create a folder named `Carental` in the `htdocs` directory of your XAMPP installation (usually found in `C:\xampp\htdocs` on Windows or `/Applications/XAMPP/htdocs` on macOS).
-   - Copy all your project files (PHP, JS, CSS) into the `Carental` folder.
+   - Copy all your project files (PHP, JS, CSS, etc.) into the `Carental` folder.
 
 4. **Run the Project**:
    - Make sure to check if the Apache server and MySQL is running from the XAMPP Control Panel.
@@ -34,14 +34,14 @@ By following these steps, you'll have the Carental website set up and running lo
 ## Features
 
 ### Home Page
-<img src="src/images/readme/Home-Page.gif" alt="Home Page" width="71%" height="auto"> <img src="src/images/readme/Home-Page-phone.gif" alt="Home Page - Phone" width="28%" height="auto">
+![Car Portfolio Page](src/images/readme/Home-Page.gif)
 
 - Four tiles that navigate the user to the Car Portfolio page with corresponding URL filters
 - General information about the company
 - Map providing information about abroad restrictions
 
 ### Car Portfolio
-<img src="src/images/readme/Car-Portfolio-Page.gif" alt="Car Portfolio Page - Desktop" width="71%" height="auto"> <img src="src/images/readme/Car-Portfolio-Page-Phone.gif" alt="Car Portfolio Page - Phone" width="28%" height="auto">
+![Car Portfolio Page](src/images/readme/Car-Portfolio-Page.gif)
 
 - Displays the company's car portfolio (from XAMPP database)
 - Filters for the fleet:
@@ -56,16 +56,20 @@ By following these steps, you'll have the Carental website set up and running lo
 - Button "Rent the car" navigates the user to the Booking page with the car's name in the text filter
 
 ### Booking
-![Booking Page Screenshot 0](src/images/readme/booking0.png)
-![Booking Page Screenshot 1](src/images/readme/booking1.png)
+![Booking Page](src/images/readme/Booking-Page.gif)
+- Segment mandatory to fill by a user:
+  - Pick-up and Drop-off location (drop down option)
+  - Pick-up and Drop-off date (calendar via external libarary)
+  - Pick-up and Drop-off hour (drop down option)
 - Advanced filtering options:
-  - Text filtering
   - Vehicle type:
-    - Show all
-    - Passenger
+    - City
+    - SUV
+    - Sports
     - Van
-    - Delivery van
     - Electric
+    - Luxury
+    - Truck
   - Transmission:
     - Manual
     - Automatic
@@ -73,15 +77,11 @@ By following these steps, you'll have the Carental website set up and running lo
     - Gasoline/Petrol
     - Diesel
 - Tiles with cars that match the selected categories appear after searching
-- Segment mandatory to fill by a user:
-  - Pick-up and Drop-off location
-  - Pick-up and Drop-off date
-  - Pick-up and Drop-off hour
 - User selections are saved in localStorage and displayed in the "summary"
 - Button "Rent the car" navigates the user to the Paying form page with the selected car and filled information
 
 ### Paying Form
-![Paying Page Screenshot 0](src/images/readme/paying0.png)
+![Paying Page](src/images/readme/Paying-Form-Page.gif)
 - Summary of the selected car and user details
 - User selects a "Waiver Package":
   - STANDARD
@@ -90,12 +90,13 @@ By following these steps, you'll have the Carental website set up and running lo
 - Summary below the selected package shows the total amount due (counting fee for all selected days and chosen package)
 
 ### Sign in / Log in
-![Sign in / Log in Page Screenshot 0](src/images/readme/signinlogin.png)
+![Sign in / Log in Page](src/images/readme/Sign-In-Log-In-Page.gif)
 - Options for users to "Sign in" or "Log in"
 - Renting a car is possible after logging in
 - Users have to create an account and fill in personal data to be able to rent our cars
 
 ## Responsive Design
+
 - The website is responsive and works seamlessly on desktops, laptops, tablets, and mobile phones.
 - Each button has a responsive action upon hovering and activating.
 - Each page includes a header and footer.
@@ -104,6 +105,7 @@ By following these steps, you'll have the Carental website set up and running lo
 - The Home and Sign in/Log in pages use background images with fluid transitions.
 
 ## Database Integration
+
 - Database with car types, user accounts, login credentials, and passwords
 
 ## Challanges durign production
@@ -116,7 +118,6 @@ The vast majority of the time was spent on integrating the calendar with the pag
 ## Troubleshooting
 
 ### "MySQL shutdown unexpectedly" Error in XAMPP**
-
 You may encounter the following error in XAMPP Control Panel:
    ```bash
    [mysql] Error: MySQL shutdown unexpectedly.
@@ -154,7 +155,6 @@ You may encounter the following error in XAMPP Control Panel:
 
 
 #### Additional Notes
-
 - If MySQL still fails to start, check the `mysql_error.log` file located in the `xampp/mysql/data` folder for more details.
 - Ensure that no other application is using port **3306**. If there is a conflict, change the MySQL port in `my.ini` configuration file.
 

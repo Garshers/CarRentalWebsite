@@ -15,7 +15,7 @@
 
     }
     .paying-choices {
-        min-height: 200px;
+        min-height: 300px;
         border-radius: 24px;
         padding: 20px;
         
@@ -128,5 +128,8 @@
     @media screen and (max-width: 1090px) {
         .paying-frame{
             flex-direction: column;
+        }
+        .paying-choices {
+            min-height: 200px;
         }
     }
