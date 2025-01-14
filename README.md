@@ -155,6 +155,4 @@ If you encounter this error, follow these steps:
 
 ## License
 
-This project is licensed under the MIT License. Third-party components include:
-- Calendar component from an open-source GitHub repository.
-- Images sourced from Google Images and the Car Net website.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
