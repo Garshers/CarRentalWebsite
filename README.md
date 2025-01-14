@@ -156,3 +156,6 @@ If you encounter this error, follow these steps:
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
+**Note:** The images used in this project are not covered under the MIT License. They are sourced from external providers and may be subject to copyright restrictions.
+
